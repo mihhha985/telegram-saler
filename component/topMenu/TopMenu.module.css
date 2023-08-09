@@ -1,0 +1,30 @@
+.search{
+	padding: 2px 3px;
+	display: flex;
+	align-items: center;
+	justify-content: stretch;
+	width: 100%;
+	height: 36px;
+	background: rgba(116, 116, 128, 0.08);
+	border-radius: 9px;
+}
+
+.search > a{
+	display: flex;
+	flex-grow: 1;
+	padding: 6px 0;
+	justify-content: center;
+	align-items: center;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing: -0.078px;
+	cursor: pointer;
+}
+
+.search > a.active{
+	border-radius: 8.91px;
+	background: #fff;
+	font-weight: 600;
+	box-shadow: 2px 2px 4px rgba(0,0,0,.1);
+}
