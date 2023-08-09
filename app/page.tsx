@@ -134,23 +134,32 @@ export default function Home() {
 								style={{display:"none"}}
 							/>
 						</Grid>
-						{(file && !fileError)
-							?
-							<Grid
-								columnGap="10px" 
-								display="flex">
-								<Typography variant="caption" display="block" gutterBottom>
-									{file.name}
+					
+							{(file && !fileError)
+								?
+								<Grid
+									columnGap="10px" 
+									display="flex">
+									<Typography variant="caption" display="block" gutterBottom>
+										{file.name}
+									</Typography>
+									<IoMdCloseCircle 
+										onClick={() => setFile(null)}
+										color="#8d8484"/>
+								</Grid>
+								:
+								<Typography
+									variant="caption" 
+									display="block" 
+									gutterBottom>
+										{fileError
+											?
+											<span style={{color:"red"}}>wrong file format</span>
+											:
+											<span>Допустимые форматы файла <b>.txt</b> <b>.csv</b></span>
+										}
 								</Typography>
-								<IoMdCloseCircle 
-									onClick={() => setFile(null)}
-									color="#8d8484"/>
-							</Grid>
-							:
-							<Typography variant="caption" display="block" gutterBottom>
-								Допустимые форматы файла <b>.txt</b> <b>.csv</b>
-							</Typography>
-						}
+							}
 					</Box>
 					<Button
 						sx={{mt:"auto"}} 
