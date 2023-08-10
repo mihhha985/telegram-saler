@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation";
-import {useState, useRef, RefObject, ChangeEvent} from "react";
+import {useState, useRef, useEffect, RefObject, ChangeEvent} from "react";
 import TopMenu from "@/component/topMenu/TopMenu";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -14,7 +14,7 @@ import { IProduct } from "@/types/productType";
 const options = ['Windows', 'Linux', 'MacOS', 'Playstation', 'XBOX'];
 
 
-export default function Home() {
+export default function Page({ params }: { params: { id: string } }) {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 	const {products} = useAppSelector(store => store.product);
@@ -28,6 +28,16 @@ export default function Home() {
 	const [categories, setCategories] = useState<string[]>([]);
 	const [file, setFile] = useState<File | null>(null);
 	const [fileError, setFileError] = useState<boolean>(false);
+	
+	useEffect(() => {
+		let product = products.find(item => item.id === +params.id);
+		if(product){
+			setName(product.name);
+			setDescription(product.description);
+			setPrice(product.price.toString());
+		}
+
+	},[params]);
 
 	const setNameHeandler = (value:string):void => {
 		if(value.length < 100){
