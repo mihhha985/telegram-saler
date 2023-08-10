@@ -35,6 +35,7 @@ export default function Page({ params }: { params: { id: string } }) {
 			setName(product.name);
 			setDescription(product.description);
 			setPrice(product.price.toString());
+			setCategories(product.category);
 		}
 
 	},[params]);
@@ -140,6 +141,11 @@ export default function Page({ params }: { params: { id: string } }) {
 					<Autocomplete
 						multiple
 						options={options}
+						value={categories}
+						onChange={(event: any, newValue: any) => {
+							setCategories(newValue);
+						}}
+						
 						renderInput={(params) => (
 							<TextField
 								{...params}

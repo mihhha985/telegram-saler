@@ -130,6 +130,11 @@ export default function Home() {
 					<Autocomplete
 						multiple
 						options={options}
+						value={categories}
+						onChange={(event: any, newValue: any) => {
+							setCategories(newValue);
+						}}
+						
 						renderInput={(params) => (
 							<TextField
 								{...params}

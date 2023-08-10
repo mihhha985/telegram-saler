@@ -20,6 +20,7 @@ import {typeOrderStatus} from "@/types/orderType";
 import { useAppSelector } from "@/store/hooks";
 import cn from "classnames";
 import styles from "./page.module.scss";
+import { IProduct } from "@/types/productType";
 
 export default function Page({ params }: { params: { id: string } }) {
 	const router = useRouter();
@@ -33,6 +34,13 @@ export default function Page({ params }: { params: { id: string } }) {
 	
 
 	let product = useMemo(() => products.find(item => item.id === +params.id), [products]);
+	let category = useMemo(() => {
+		if(product && product.category.length > 0){
+			return product.category;
+		}
+
+		return false;
+	}, [product])
 
 	const hendlerStatus = ():void => {
 		if(status === typeOrderStatus['Not Active']) 
@@ -101,11 +109,14 @@ export default function Page({ params }: { params: { id: string } }) {
 				<div className={styles.categoryBox}>
 					<h4>Categories</h4>
 					<div className={styles.categoryItems}>
-						<span>Windows</span> 
-						<span>Linux</span>
-						<span>MacOS</span>
-						<span>Playstation</span>
-						<span>XBOX</span>
+						{category === false
+							?
+								<span></span>
+							:
+							<>
+							{category.map(item => <span key={item}>{item}</span>)}
+							</>
+						}
 					</div>
 				</div>
 				<div className={styles.buttonContainer}>
@@ -150,50 +161,50 @@ export default function Page({ params }: { params: { id: string } }) {
 			<Dialog onClose={() => setOpen(false)} open={open}>
       	<DialogTitle>Set backup account</DialogTitle>
 				<Box> 
-						<Grid 
-							sx={{border: "dotted 3px #ccc"}}
-							alignItems="center"
-							justifyContent="center"
-							height="80px"
-							width="100%"
-							display="flex">
-							<Button
-								onClick={() => inputFile.current?.click()}
-								variant="text">
-								<AiOutlinePaperClip />
-								<span>Выбрать файлы</span>
-							</Button>	
-							<input 
-								onChange={e => setFileHeandler(e)}
-								ref={inputFile} 
-								type="file" 
-								style={{display:"none"}}
-							/>
-						</Grid>
+					<Grid 
+						sx={{border: "dotted 3px #ccc"}}
+						alignItems="center"
+						justifyContent="center"
+						height="80px"
+						width="100%"
+						display="flex">
+						<Button
+							onClick={() => inputFile.current?.click()}
+							variant="text">
+							<AiOutlinePaperClip />
+							<span>Выбрать файлы</span>
+						</Button>	
+						<input 
+							onChange={e => setFileHeandler(e)}
+							ref={inputFile} 
+							type="file" 
+							style={{display:"none"}}
+						/>
+					</Grid>
 					{(file && !fileError)
-								?
-								<Grid
-									columnGap="10px" 
-									display="flex">
-									<Typography variant="caption" display="block" gutterBottom>
-										{file.name}
-									</Typography>
-									<IoMdCloseCircle 
-										onClick={() => setFile(null)}
-										color="#8d8484"/>
-								</Grid>
-								:
-								<Typography
-									variant="caption" 
-									display="block" 
-									gutterBottom>
-										{fileError
-											?
-											<span style={{color:"red"}}>wrong file format</span>
-											:
-											<span>Допустимые форматы файла <b>.txt</b> <b>.csv</b></span>
-										}
+						?
+							<Grid
+								columnGap="10px" 
+								display="flex">
+								<Typography variant="caption" display="block" gutterBottom>
+									{file.name}
 								</Typography>
+								<IoMdCloseCircle 
+									onClick={() => setFile(null)}
+									color="#8d8484"/>
+							</Grid>
+						:
+							<Typography
+								variant="caption" 
+								display="block" 
+								gutterBottom>
+								{fileError
+									?
+										<span style={{color:"red"}}>wrong file format</span>
+									:
+										<span>Допустимые форматы файла <b>.txt</b> <b>.csv</b></span>
+								}
+							</Typography>
 					}
 				</Box>	
     	</Dialog>
