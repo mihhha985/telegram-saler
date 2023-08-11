@@ -98,9 +98,7 @@ export default function Page({ params }: { params: { id: string } }) {
 	}
 
   return (
-    <div className="layout">
-			<TopMenu />	
-			<Box
+		<Box
 			sx={{width:"100%", height:"100%", mt:"40px"}}
       component="form"
       noValidate
@@ -209,7 +207,6 @@ export default function Page({ params }: { params: { id: string } }) {
 					</Button>
 					
 				</Grid>
-			</Box>
-		</div>
+		</Box>
   )
 }

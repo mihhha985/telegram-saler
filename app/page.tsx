@@ -86,10 +86,8 @@ export default function Home() {
 		}, 500);
 	}
 
-  return (
-    <div className="layout">
-			<TopMenu />	
-			<Box
+  return (  
+		<Box
 			sx={{width:"100%", height:"100%", mt:"40px"}}
       component="form"
       noValidate
@@ -198,7 +196,6 @@ export default function Home() {
 					</Button>
 					
 				</Grid>
-			</Box>
-		</div>
+		</Box>
   )
 }

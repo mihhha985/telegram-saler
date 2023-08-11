@@ -1,0 +1,24 @@
+.staticticBox{
+	width: 100%;
+	height: calc(100vh - 78px);
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+	row-gap: 10px;
+	overflow-y: scroll!important;
+}
+
+.staticticBox::-webkit-scrollbar {
+  width: 10px;
+}
+
+.staticticBox::-webkit-scrollbar-track {
+	border-radius: 8px;
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.4) inset;
+  background-color: #fcfcfc;
+}
+
+.staticticBox::-webkit-scrollbar-thumb {
+  background-color: rgba(116, 116, 128, 0.2);
+	border-radius: 8px;
+}

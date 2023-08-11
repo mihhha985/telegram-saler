@@ -1,0 +1,86 @@
+.staticticItem{
+	height: 250px;
+	width: 96%;
+	margin: 0 auto;
+	padding:15px 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-shrink: 0;
+
+	.top{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.bottom > div{
+		display: flex;
+		align-items: center;
+
+		span{
+			width: 20px;
+			height: 10px;
+			border-radius: 8px;
+			margin-right: 5px;
+		}
+	}
+
+	.center{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		column-gap: 10px;
+
+		span{
+			height: 80px;
+			width: 5px;
+			border-radius: 8px;
+			background: #e5edff;
+			position: relative;
+		}
+
+		span::before{
+			content: "";
+			border-radius: 8px;
+			position: absolute;
+			width: 100%;
+			height: 60%;
+			bottom:0;
+			left: 0;
+			background: #3874ff;
+		}
+
+		span:nth-child(2)::before{
+			height: 100%;
+		}
+
+		span:nth-child(3)::before{
+			height: 80%;
+		}
+
+		span:nth-child(4)::before{
+			height: 30%;
+		}
+
+		span:nth-child(5)::before{
+			height: 20%;
+		}
+
+		span:nth-child(6)::before{
+			height: 38%;
+		}
+
+		span:nth-child(7)::before{
+			height: 52%;
+		}
+	}
+
+	.bottom > div:first-child > span{
+		background: #3874ff;
+	}
+
+	.bottom > div:last-child > span{
+		background: #e5edff;
+	}
+}

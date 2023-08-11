@@ -11,7 +11,7 @@ function TopMenu() {
 			<Link href="/wallet" className={pathname === '/manage' ? styles.active : ''}>Manage</Link>
 			<Link href="/orders" className={pathname === '/wallet' ? styles.active : ''}>Wallet</Link>
 			<Link href="/info" className={pathname === '/info' ? styles.active : ''}>Info</Link>
-			<Link href="/favorites" className={pathname === '/statistics' ? styles.active : ''}>Statistics</Link>
+			<Link href="/statistics" className={pathname === '/statistics' ? styles.active : ''}>Statistics</Link>
 		</div>
 	);
 }

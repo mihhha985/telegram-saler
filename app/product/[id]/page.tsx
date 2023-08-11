@@ -20,7 +20,6 @@ import {typeOrderStatus} from "@/types/orderType";
 import { useAppSelector } from "@/store/hooks";
 import cn from "classnames";
 import styles from "./page.module.scss";
-import { IProduct } from "@/types/productType";
 
 export default function Page({ params }: { params: { id: string } }) {
 	const router = useRouter();
@@ -62,7 +61,7 @@ export default function Page({ params }: { params: { id: string } }) {
 	}
 	
   return(
-		<div className="layout">
+		<>
 			<div className={styles.productContainer}>
 				<div className={styles.itemBox}>
 					<div className={styles.imageBox}>
@@ -208,6 +207,6 @@ export default function Page({ params }: { params: { id: string } }) {
 					}
 				</Box>	
     	</Dialog>
-		</div>
+		</>
 	)
 }
